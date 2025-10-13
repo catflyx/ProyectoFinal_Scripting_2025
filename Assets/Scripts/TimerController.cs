@@ -16,7 +16,7 @@ public class TimerController : MonoBehaviour
     private bool isCounting = true;
     private bool waitingReset = false; // espera a que EndsController avise
 
-    void Start()
+    public void Start()
     {
         ResetTimer(); timerText.color = Color.white;
     }
