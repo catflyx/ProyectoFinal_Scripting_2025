@@ -66,7 +66,8 @@ public class PlayerController : MonoBehaviour
         Vector2 dir = (mousePos - transform.position).normalized;
 
         rb.linearVelocity = new Vector2(rb.linearVelocity.x, 0f);
-        rb.AddForce(dir * jumpForce, ForceMode2D.Impulse);
+        float direccionGravedad = Mathf.Sign(rb.gravityScale); // +1 normal, -1 invertida
+        rb.AddForce(dir * jumpForce * direccionGravedad, ForceMode2D.Impulse);
 
         canGroundJump = false;
         SetAirMaterial();
