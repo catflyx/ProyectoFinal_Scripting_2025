@@ -3,7 +3,7 @@ El proyecto de unity está en la rama `backup`, así como en la carpeta ejecutab
 ####
 En `main` está:
 - El archivo de la propuesta con sus correspondientes correciones tomadas del **avance 1**.
-- El archivo con bugs registrados.
+- El archivo con bugs registrados para el **avance 2**.
 
 ## Miembros
 - Simara Villasmil - 000509719
