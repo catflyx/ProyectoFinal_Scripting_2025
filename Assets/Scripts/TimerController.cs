@@ -12,13 +12,18 @@ public class TimerController : MonoBehaviour
     [Header("Texto en pantalla")]
     public TextMeshProUGUI timerText;
 
+    // ahora 'timer' e 'isCounting' siguen privados pero expuestos vía propiedades públicas
     private float timer;
     private bool isCounting = true;
     private bool waitingReset = false; // espera a que EndsController avise
 
+    public bool IsCounting => isCounting;
+    public float CurrentTime => timer;
+
     public void Start()
     {
-        ResetTimer(); timerText.color = Color.white;
+        ResetTimer();
+        if (timerText != null) timerText.color = Color.white;
     }
 
     void Update()
@@ -37,10 +42,12 @@ public class TimerController : MonoBehaviour
                 if (objectToActivate != null)
                     objectToActivate.SetActive(true);
 
-                // Muestra el mensaje
+                // Muestra el mensaje (ambas líneas protegidas por null-check)
                 if (timerText != null)
+                {
                     timerText.color = Color.red;
                     timerText.text = "ES MUY TARDE";
+                }
 
                 Debug.Log("VIENE");
             }
@@ -66,12 +73,21 @@ public class TimerController : MonoBehaviour
             objectToActivate.SetActive(false);
     }
 
+    // Método público para pruebas: forzar que el timer llegue a cero
+    public void ForceExpire()
+    {
+        timer = 0f;
+        isCounting = true;      // garantizamos que Update() procese el caso
+        Update();               // en modo test llamamos Update() manualmente si queremos
+    }
+
     // Esta función será llamada por EndsController cuando toque al Player
     public void NotifyObjectTouchedPlayer()
     {
         if (waitingReset)
         {
-            ResetTimer(); timerText.color = Color.white;
+            ResetTimer();
+            if (timerText != null) timerText.color = Color.white;
         }
     }
 }
