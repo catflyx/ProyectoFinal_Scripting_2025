@@ -48,7 +48,7 @@ public class CristalPlatform : MonoBehaviour
         if (tiempoParaRegenerar > 0)
             Invoke(nameof(RegenerarCristal), tiempoParaRegenerar);
         else
-            Destroy(gameObject, 1.5f); // se destruye después de un tiempo
+            Destroy(gameObject);
     }
 
     void RegenerarCristal()
