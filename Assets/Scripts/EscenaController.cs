@@ -46,6 +46,11 @@ public class EscenaController : MonoBehaviour
         Application.Quit(); Debug.Log("Salió");
     }
 
+    public void menu()
+    {
+        SceneManager.LoadScene("Menu");
+    }
+
     public void SiguienteNivel()
     {
         nivel++;
