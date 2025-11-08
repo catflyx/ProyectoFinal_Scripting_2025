@@ -10,6 +10,7 @@ public class ImanGravedad : MonoBehaviour
     public float rotacionSuavizada = 5f;
 
     private Rigidbody2D rbJugador;
+    private Collider2D colisor;
     private bool jugadorDentro = false;
     private float gravedadOriginal;
 

@@ -31,7 +31,7 @@ public class ImanGravedadTests
     public void Iman_InvierteGravedadAlEntrar()
     {
         // Simulamos la entrada al trigger
-        iman.SendMessage("OnTriggerEnter2D", playerCollider, SendMessageOptions.DontRequireReceiver);
+        iman.SendMessage("OnCollisionEnter2D", playerCollider, SendMessageOptions.DontRequireReceiver);
 
         // Verificamos que la gravedad fue invertida con el factor de reducción
         float expected = -Mathf.Abs(1f) * iman.factorReduccion;
@@ -42,8 +42,8 @@ public class ImanGravedadTests
     public void Iman_RestauraGravedadAlSalir()
     {
         // Simulamos entrada y salida
-        iman.SendMessage("OnTriggerEnter2D", playerCollider, SendMessageOptions.DontRequireReceiver);
-        iman.SendMessage("OnTriggerExit2D", playerCollider, SendMessageOptions.DontRequireReceiver);
+        iman.SendMessage("OnCollisionEnter2D", playerCollider, SendMessageOptions.DontRequireReceiver);
+        iman.SendMessage("OnCollisionExit2D", playerCollider, SendMessageOptions.DontRequireReceiver);
 
         // Verificamos que se restauró la gravedad original
         Assert.AreEqual(1f, rb.gravityScale, 0.01f, "La gravedad no se restauró correctamente al salir del imán.");
