@@ -20,7 +20,11 @@ public class PlayerController : MonoBehaviour
     public PhysicsMaterial2D airMaterial;
 
     [Header("Respawn")]
-    public Transform respawnPoint; // asigna en el inspector el punto de respawn
+    public Transform respawnPoint;
+
+    [Header("Audio")]
+    public AudioSource jumpSound;  //  Asigna un AudioSource con el sonido de salto
+    private int jumpClickCounter = 0; // contador de clics
 
     private Rigidbody2D rb;
     private bool canGroundJump;
@@ -54,8 +58,26 @@ public class PlayerController : MonoBehaviour
 
         if (Input.GetMouseButtonDown(0))
         {
-            if (canGroundJump) JumpToMouse();
-            else if (wallTimer > 0f) WallJump();
+            jumpClickCounter++; //  Aumenta el contador de clics
+
+            if (canGroundJump)
+            {
+                JumpToMouse();
+                PlayJumpSoundIfNeeded(); //  Verifica si debe sonar
+            }
+            else if (wallTimer > 0f)
+            {
+                WallJump();
+                PlayJumpSoundIfNeeded(); //  También aplica al wall jump
+            }
+        }
+    }
+
+    void PlayJumpSoundIfNeeded()
+    {
+        if (jumpClickCounter % 3 == 0 && jumpSound != null)
+        {
+            jumpSound.Play();
         }
     }
 
@@ -66,7 +88,7 @@ public class PlayerController : MonoBehaviour
         Vector2 dir = (mousePos - transform.position).normalized;
 
         rb.linearVelocity = new Vector2(rb.linearVelocity.x, 0f);
-        float direccionGravedad = Mathf.Sign(rb.gravityScale); // +1 normal, -1 invertida
+        float direccionGravedad = Mathf.Sign(rb.gravityScale);
         rb.AddForce(dir * jumpForce * direccionGravedad, ForceMode2D.Impulse);
 
         canGroundJump = false;
@@ -128,7 +150,6 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    // 🔹 Detecta entrada en trigger de respawn
     void OnTriggerEnter2D(Collider2D col)
     {
         if (col.CompareTag("Respawn"))
@@ -137,12 +158,11 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    // 🔹 Teletransporta al jugador
     void Respawn()
     {
         if (respawnPoint != null)
         {
-            rb.linearVelocity = Vector2.zero; // limpiar velocidad
+            rb.linearVelocity = Vector2.zero;
             transform.position = respawnPoint.position;
         }
         else

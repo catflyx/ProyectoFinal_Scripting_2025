@@ -207,7 +207,7 @@ Transform:
   m_GameObject: {fileID: 138057431}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.8553314, y: -2.4399948, z: -10}
+  m_LocalPosition: {x: -9.470001, y: -2.4399986, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1882,7 +1882,7 @@ MonoBehaviour:
   cristalRoto: {fileID: 0}
   cristalNormal: {fileID: 0}
   timerController: {fileID: 0}
-  sonidoRoto: {fileID: 8300000, guid: 629d2886103f0e043889cf885671e57c, type: 3}
+  sonidoRoto: {fileID: 8300000, guid: 0b92aa17df2c91d4181fde98b6539d36, type: 3}
 --- !u!61 &666257800
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2126,7 +2126,7 @@ MonoBehaviour:
   cristalRoto: {fileID: 0}
   cristalNormal: {fileID: 0}
   timerController: {fileID: 0}
-  sonidoRoto: {fileID: 8300000, guid: 629d2886103f0e043889cf885671e57c, type: 3}
+  sonidoRoto: {fileID: 8300000, guid: 0b92aa17df2c91d4181fde98b6539d36, type: 3}
 --- !u!61 &803678533
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2605,7 +2605,7 @@ MonoBehaviour:
   cristalRoto: {fileID: 0}
   cristalNormal: {fileID: 0}
   timerController: {fileID: 0}
-  sonidoRoto: {fileID: 8300000, guid: 629d2886103f0e043889cf885671e57c, type: 3}
+  sonidoRoto: {fileID: 8300000, guid: 0b92aa17df2c91d4181fde98b6539d36, type: 3}
 --- !u!61 &1017006431
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2758,7 +2758,7 @@ MonoBehaviour:
   cristalRoto: {fileID: 0}
   cristalNormal: {fileID: 0}
   timerController: {fileID: 0}
-  sonidoRoto: {fileID: 8300000, guid: 629d2886103f0e043889cf885671e57c, type: 3}
+  sonidoRoto: {fileID: 8300000, guid: 0b92aa17df2c91d4181fde98b6539d36, type: 3}
 --- !u!61 &1018042726
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -3137,6 +3137,7 @@ GameObject:
   - component: {fileID: 1170595397}
   - component: {fileID: 1170595400}
   - component: {fileID: 1170595401}
+  - component: {fileID: 1170595402}
   m_Layer: 0
   m_Name: player
   m_TagString: Player
@@ -3311,6 +3312,104 @@ MonoBehaviour:
   groundMaterial2: {fileID: 6200000, guid: 1b68dc205e0b76544824dc274e65aff1, type: 2}
   airMaterial: {fileID: 6200000, guid: d8eda723073c87e4fa40d4ebf39184c9, type: 2}
   respawnPoint: {fileID: 2092232701}
+  jumpSound: {fileID: 1170595402}
+--- !u!82 &1170595402
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1170595396}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_Resource: {fileID: 8300000, guid: 0890ea1281ab6744ebe92c49c846cc45, type: 3}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &1200735995
 GameObject:
   m_ObjectHideFlags: 0
@@ -3434,7 +3533,7 @@ MonoBehaviour:
   cristalRoto: {fileID: 0}
   cristalNormal: {fileID: 0}
   timerController: {fileID: 0}
-  sonidoRoto: {fileID: 8300000, guid: 629d2886103f0e043889cf885671e57c, type: 3}
+  sonidoRoto: {fileID: 8300000, guid: 0b92aa17df2c91d4181fde98b6539d36, type: 3}
 --- !u!61 &1374045133
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -3698,6 +3797,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 213cc7b1ba64eef4789a6ae6a8a06d7b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  moveSpeed: 120
+  sonidoImpacto: {fileID: 8300000, guid: dd8dfa2006a3f5441babb874e02d137e, type: 3}
 --- !u!1 &1435198345
 GameObject:
   m_ObjectHideFlags: 0
@@ -4031,18 +4132,30 @@ EdgeCollider2D:
   m_Offset: {x: 0, y: 0}
   m_EdgeRadius: 0.78
   m_Points:
-  - {x: 20.292427, y: 1.5311556}
-  - {x: 19.844536, y: 1.5107913}
-  - {x: 19.269491, y: 1.3298333}
-  - {x: 18.586132, y: 1.0091723}
-  - {x: 17.810963, y: 0.56959724}
-  - {x: 16.961124, y: 0.031885915}
-  - {x: 16.053795, y: -0.5831819}
-  - {x: 14.065421, y: -2.013963}
-  - {x: 11.150864, y: -4.1671414}
-  - {x: 9.53533, y: -5.308915}
-  - {x: 8.7864275, y: -5.79464}
-  - {x: 8.134666, y: -6.17066}
+  - {x: 21.007484, y: 12.618508}
+  - {x: 22.280224, y: 10.362571}
+  - {x: 23.031832, y: 8.935971}
+  - {x: 23.376846, y: 8.187447}
+  - {x: 23.678633, y: 7.430471}
+  - {x: 23.920162, y: 6.6763177}
+  - {x: 24.084404, y: 5.936267}
+  - {x: 24.154348, y: 5.2215996}
+  - {x: 24.112991, y: 4.5435896}
+  - {x: 23.917181, y: 3.8661056}
+  - {x: 23.628378, y: 3.3425312}
+  - {x: 23.151049, y: 2.841881}
+  - {x: 22.699268, y: 2.574129}
+  - {x: 21.300434, y: 2.0766845}
+  - {x: 19.035906, y: 1.4465497}
+  - {x: 18.350847, y: 1.1934266}
+  - {x: 17.424454, y: 0.6580256}
+  - {x: 16.526337, y: 0.097764805}
+  - {x: 15.658027, y: -0.4801702}
+  - {x: 14.821094, y: -1.0685726}
+  - {x: 13.1545925, y: -2.321093}
+  - {x: 9.97291, y: -4.8751135}
+  - {x: 8.959596, y: -5.6461043}
+  - {x: 8.134666, y: -6.170659}
   m_AdjacentStartPoint: {x: 0, y: 0}
   m_AdjacentEndPoint: {x: 0, y: 0}
   m_UseAdjacentStartPoint: 0
@@ -4062,17 +4175,33 @@ MonoBehaviour:
   m_Spline:
     m_IsOpenEnded: 1
     m_ControlPoints:
-    - position: {x: 20.292133, y: 1.5294912, z: 0}
-      leftTangent: {x: 1.3308048, y: -0.23457801, z: 0}
-      rightTangent: {x: -1.8952312, y: 0.33407748, z: 0}
+    - position: {x: 21.008995, y: 12.619269, z: 0}
+      leftTangent: {x: -0.60604477, y: 1.2007685, z: 0}
+      rightTangent: {x: 1.0581093, y: -2.096593, z: 0}
       mode: 1
       height: 1
       spriteIndex: 0
       corner: 1
       m_CornerMode: 1
-    - position: {x: 8.135451, y: -6.1721563, z: 0}
-      leftTangent: {x: 2.987897, y: 1.571516, z: 0}
-      rightTangent: {x: -0.81955147, y: -0.4310584, z: 0}
+    - position: {x: 23.152143, y: 2.8405936, z: 0}
+      leftTangent: {x: 2.8224564, y: 2.309933, z: 0}
+      rightTangent: {x: -0.83496666, y: -0.6843245, z: 0}
+      mode: 1
+      height: 1
+      spriteIndex: 0
+      corner: 1
+      m_CornerMode: 1
+    - position: {x: 18.351625, y: 1.1919267, z: 0}
+      leftTangent: {x: 0.6918621, y: 0.38343644, z: 0}
+      rightTangent: {x: -4.6994686, y: -2.6025314, z: 0}
+      mode: 1
+      height: 1
+      spriteIndex: 0
+      corner: 1
+      m_CornerMode: 1
+    - position: {x: 8.135451, y: -6.1721554, z: 0}
+      leftTangent: {x: 1.8170137, y: 0.95567703, z: 0}
+      rightTangent: {x: -0.81955194, y: -0.43105888, z: 0}
       mode: 1
       height: 1
       spriteIndex: 0
@@ -4099,18 +4228,30 @@ MonoBehaviour:
   m_Creator: {fileID: 0}
   m_Modifiers: []
   m_ColliderSegment:
-  - {x: 20.292427, y: 1.5311556}
-  - {x: 19.844536, y: 1.5107913}
-  - {x: 19.269491, y: 1.3298333}
-  - {x: 18.586132, y: 1.0091723}
-  - {x: 17.810963, y: 0.56959724}
-  - {x: 16.961124, y: 0.031885915}
-  - {x: 16.053795, y: -0.5831819}
-  - {x: 14.065421, y: -2.013963}
-  - {x: 11.150864, y: -4.1671414}
-  - {x: 9.53533, y: -5.308915}
-  - {x: 8.7864275, y: -5.79464}
-  - {x: 8.134666, y: -6.17066}
+  - {x: 21.007484, y: 12.618508}
+  - {x: 22.280224, y: 10.362571}
+  - {x: 23.031832, y: 8.935971}
+  - {x: 23.376846, y: 8.187447}
+  - {x: 23.678633, y: 7.430471}
+  - {x: 23.920162, y: 6.6763177}
+  - {x: 24.084404, y: 5.936267}
+  - {x: 24.154348, y: 5.2215996}
+  - {x: 24.112991, y: 4.5435896}
+  - {x: 23.917181, y: 3.8661056}
+  - {x: 23.628378, y: 3.3425312}
+  - {x: 23.151049, y: 2.841881}
+  - {x: 22.699268, y: 2.574129}
+  - {x: 21.300434, y: 2.0766845}
+  - {x: 19.035906, y: 1.4465497}
+  - {x: 18.350847, y: 1.1934266}
+  - {x: 17.424454, y: 0.6580256}
+  - {x: 16.526337, y: 0.097764805}
+  - {x: 15.658027, y: -0.4801702}
+  - {x: 14.821094, y: -1.0685726}
+  - {x: 13.1545925, y: -2.321093}
+  - {x: 9.97291, y: -4.8751135}
+  - {x: 8.959596, y: -5.6461043}
+  - {x: 8.134666, y: -6.170659}
   m_ShadowSegment: []
 --- !u!1971053207 &1526775722
 SpriteShapeRenderer:
@@ -4171,8 +4312,8 @@ SpriteShapeRenderer:
   - {fileID: 21300000, guid: 608e61deb05c54660bebf5a4dd2ee02d, type: 3}
   - {fileID: 21300000, guid: 608e61deb05c54660bebf5a4dd2ee02d, type: 3}
   m_LocalAABB:
-    m_Center: {x: 14.090464, y: -2.2791796, z: 0}
-    m_Extent: {x: 6.3483586, y: 4.6408415, z: 0}
+    m_Center: {x: 16.3715, y: 3.0399828, z: 0}
+    m_Extent: {x: 8.6293955, y: 9.960003, z: 0}
   m_SpriteSortPoint: 0
 --- !u!1 &1576747821
 GameObject:
@@ -5284,7 +5425,7 @@ MonoBehaviour:
   cristalRoto: {fileID: 0}
   cristalNormal: {fileID: 0}
   timerController: {fileID: 0}
-  sonidoRoto: {fileID: 8300000, guid: 629d2886103f0e043889cf885671e57c, type: 3}
+  sonidoRoto: {fileID: 8300000, guid: 0b92aa17df2c91d4181fde98b6539d36, type: 3}
 --- !u!61 &1959537704
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -5432,6 +5573,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c0d5b72c13f8274687bff1132ef0000, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sonidoVictoria: {fileID: 8300000, guid: 7bf0bfbf5b61f91499f517629d92fd27, type: 3}
 --- !u!61 &2026745227
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -5584,7 +5726,7 @@ MonoBehaviour:
   cristalRoto: {fileID: 0}
   cristalNormal: {fileID: 0}
   timerController: {fileID: 0}
-  sonidoRoto: {fileID: 8300000, guid: 629d2886103f0e043889cf885671e57c, type: 3}
+  sonidoRoto: {fileID: 8300000, guid: 0b92aa17df2c91d4181fde98b6539d36, type: 3}
 --- !u!61 &2030297993
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -5854,7 +5996,7 @@ MonoBehaviour:
   cristalRoto: {fileID: 0}
   cristalNormal: {fileID: 0}
   timerController: {fileID: 0}
-  sonidoRoto: {fileID: 8300000, guid: 629d2886103f0e043889cf885671e57c, type: 3}
+  sonidoRoto: {fileID: 8300000, guid: 0b92aa17df2c91d4181fde98b6539d36, type: 3}
 --- !u!61 &2049065715
 BoxCollider2D:
   m_ObjectHideFlags: 0
