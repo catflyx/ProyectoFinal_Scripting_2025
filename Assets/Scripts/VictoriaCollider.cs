@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections; //  necesario para usar corrutinas
 
 public class VictoriaCollider : MonoBehaviour
 {
@@ -29,19 +30,31 @@ public class VictoriaCollider : MonoBehaviour
             if (sonidoVictoria != null && audioSource != null)
                 audioSource.PlayOneShot(sonidoVictoria);
 
-            Debug.Log(" ¡Victoria! Pasando al siguiente nivel...");
+            Debug.Log("¡Victoria! Pasando al siguiente nivel...");
 
-            // Buscar el controlador de escena y pasar de nivel
+            // Buscar el controlador de escena
             EscenaController escenaController = FindAnyObjectByType<EscenaController>();
             if (escenaController != null)
             {
-                // Esperamos un momento antes de cambiar de escena para que el sonido se escuche completo
-                escenaController.SiguienteNivel();
+                //  Esperar a que termine el sonido antes de pasar de nivel
+                StartCoroutine(CambiarNivelDespuesDeSonido(escenaController));
             }
             else
             {
-                Debug.LogWarning(" No se encontró un EscenaController en la escena.");
+                Debug.LogWarning("No se encontró un EscenaController en la escena.");
             }
         }
+    }
+
+    //  Nueva corrutina añadida (no reemplaza nada existente)
+    private IEnumerator CambiarNivelDespuesDeSonido(EscenaController escenaController)
+    {
+        if (sonidoVictoria != null)
+        {
+            // Esperar la duración exacta del clip
+            yield return new WaitForSeconds(sonidoVictoria.length);
+        }
+
+        escenaController.SiguienteNivel();
     }
 }
