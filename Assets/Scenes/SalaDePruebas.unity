@@ -2834,7 +2834,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   golpesParaRomper: 3
-  tiempoParaRegenerar: 5
+  tiempoParaRegenerar: 15
   cristalRoto: {fileID: 0}
   cristalNormal: {fileID: 0}
   timerController: {fileID: 193425936}

@@ -36,7 +36,7 @@ public class VictoriaCollider : MonoBehaviour
             if (escenaController != null)
             {
                 // Esperamos un momento antes de cambiar de escena para que el sonido se escuche completo
-                escenaController.Invoke(nameof(escenaController.SiguienteNivel), sonidoVictoria != null ? sonidoVictoria.length : 0f);
+                escenaController.SiguienteNivel();
             }
             else
             {
