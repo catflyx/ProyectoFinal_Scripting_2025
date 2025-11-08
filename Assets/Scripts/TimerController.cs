@@ -12,6 +12,9 @@ public class TimerController : MonoBehaviour
     [Header("Texto en pantalla")]
     public TextMeshProUGUI timerText;
 
+    [Header("Controlador del fondo")]
+    public BackgroundController backgroundController;
+
     // ahora 'timer' e 'isCounting' siguen privados pero expuestos vía propiedades públicas
     private float timer;
     private bool isCounting = true;
@@ -28,6 +31,9 @@ public class TimerController : MonoBehaviour
 
     void Update()
     {
+        if (backgroundController != null)
+            backgroundController.ActualizarFondo(timer);
+
         // Solo cuenta si está activo
         if (isCounting)
         {
