@@ -14,6 +14,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/SalaDePruebas.unity
     guid: 7ee37f694a58788489e06f05b9ede9ff
+  - enabled: 1
+    path: Assets/Scenes/SalaDePruebas-2.unity
+    guid: 192328dae18aaa84182e66bd7140ff58
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   m_UseUCBPForAssetBundles: 0

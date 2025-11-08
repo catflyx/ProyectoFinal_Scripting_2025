@@ -67,10 +67,15 @@ public class TimerController : MonoBehaviour
         waitingReset = false;
 
         if (timerText != null)
-            timerText.text = $"Tiempo: {timer:F1}s";
+        {
+            timerText.color = Color.white;
+            timerText.text = $"{timer:F1}s";
+        }
 
         if (objectToActivate != null)
             objectToActivate.SetActive(false);
+
+        Debug.Log(" Timer reiniciado");
     }
 
     // Método público para pruebas: forzar que el timer llegue a cero
@@ -84,10 +89,6 @@ public class TimerController : MonoBehaviour
     // Esta función será llamada por EndsController cuando toque al Player
     public void NotifyObjectTouchedPlayer()
     {
-        if (waitingReset)
-        {
-            ResetTimer();
-            if (timerText != null) timerText.color = Color.white;
-        }
+        ResetTimer();
     }
 }

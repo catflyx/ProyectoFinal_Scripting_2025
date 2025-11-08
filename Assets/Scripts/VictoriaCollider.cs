@@ -16,7 +16,7 @@ public class VictoriaCollider : MonoBehaviour
             EscenaController escenaController = FindAnyObjectByType<EscenaController>();
             if (escenaController != null)
             {
-                escenaController.Volver();
+                escenaController.SiguienteNivel();
             }
             else
             {

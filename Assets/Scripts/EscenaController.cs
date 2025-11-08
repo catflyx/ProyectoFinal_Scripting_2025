@@ -39,7 +39,7 @@ public class EscenaController : MonoBehaviour
             case 2: escena = -3; break;
             case 3: escena = -4; break;
         }
-        CambiarEscena(); escena = 0; Debug.Log("Volvió");
+        CambiarEscena2(); escena = 0; Debug.Log("Volvió");
     }
     public void Salir()
     {
@@ -53,13 +53,20 @@ public class EscenaController : MonoBehaviour
         {
             case 2: escena = 3; break;
             case 3: escena = 4; break;
+            
         }
         CambiarEscena(); Debug.Log("Siquiente nivel: " + nivel);
     }
 
     public void CambiarEscena()
     {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - SceneManager.GetActiveScene().buildIndex + escena);
+        Debug.Log("Nivel: " + nivel + " Escenario = : " + escena);
+    }
+
+    public void CambiarEscena2()
+    {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + escena);
-        //Debug.Log("Nivel: " + nivel + " Escenario = : " + escena);
+        Debug.Log("Nivel: " + nivel + " Escenario = : " + escena);
     }
 }

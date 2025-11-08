@@ -3,7 +3,7 @@ using UnityEngine;
 public class EndsController : MonoBehaviour
 {
     [Header("Velocidad de movimiento hacia la derecha")]
-    float moveSpeed = 70f; //velocidad
+    float moveSpeed = 120f; //velocidad
 
     private Vector3 startPosition;
     private TimerController timerController;
