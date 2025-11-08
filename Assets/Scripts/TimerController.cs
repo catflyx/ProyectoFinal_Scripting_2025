@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 using TMPro; // Necesario para usar TextMeshPro
 
 public class TimerController : MonoBehaviour
@@ -6,7 +6,7 @@ public class TimerController : MonoBehaviour
     [Header("Tiempo en segundos")]
     public float countdownTime = 20f;
 
-    [Header("Objeto que se activar�")]
+    [Header("Objeto que se activará")]
     public GameObject objectToActivate;
 
     [Header("Texto en pantalla")]
@@ -15,7 +15,15 @@ public class TimerController : MonoBehaviour
     [Header("Controlador del fondo")]
     public BackgroundController backgroundController;
 
-    // ahora 'timer' e 'isCounting' siguen privados pero expuestos v�a propiedades p�blicas
+    // 🔊 NUEVO: control de música
+    [Header("Música del nivel")]
+    public AudioClip musicaDuranteNivel;
+    [Header("Música al finalizar")]
+    public AudioClip musicaFinNivel;
+
+    private AudioSource audioSource;
+
+    // ahora 'timer' e 'isCounting' siguen privados pero expuestos vía propiedades públicas
     private float timer;
     private bool isCounting = true;
     private bool waitingReset = false; // espera a que EndsController avise
@@ -25,8 +33,22 @@ public class TimerController : MonoBehaviour
 
     public void Start()
     {
+        // 🎵 Crear o recuperar AudioSource
+        audioSource = GetComponent<AudioSource>();
+        if (audioSource == null)
+            audioSource = gameObject.AddComponent<AudioSource>();
+
+        audioSource.loop = false; // no queremos que se repita
+
         ResetTimer();
         if (timerText != null) timerText.color = Color.white;
+
+        // 🎶 Reproducir música del nivel al iniciar
+        if (musicaDuranteNivel != null)
+        {
+            audioSource.clip = musicaDuranteNivel;
+            audioSource.Play();
+        }
     }
 
     void Update()
@@ -34,7 +56,7 @@ public class TimerController : MonoBehaviour
         if (backgroundController != null)
             backgroundController.ActualizarFondo(timer);
 
-        // Solo cuenta si est� activo
+        // Solo cuenta si está activo
         if (isCounting)
         {
             timer -= Time.deltaTime;
@@ -48,7 +70,7 @@ public class TimerController : MonoBehaviour
                 if (objectToActivate != null)
                     objectToActivate.SetActive(true);
 
-                // Muestra el mensaje (ambas l�neas protegidas por null-check)
+                // Muestra el mensaje (ambas líneas protegidas por null-check)
                 if (timerText != null)
                 {
                     timerText.color = Color.red;
@@ -56,6 +78,14 @@ public class TimerController : MonoBehaviour
                 }
 
                 Debug.Log("VIENE");
+
+                // 🎵 Reproducir música final al acabar el tiempo
+                if (musicaFinNivel != null)
+                {
+                    audioSource.Stop();
+                    audioSource.clip = musicaFinNivel;
+                    audioSource.Play();
+                }
             }
             else
             {
@@ -82,9 +112,17 @@ public class TimerController : MonoBehaviour
             objectToActivate.SetActive(false);
 
         Debug.Log(" Timer reiniciado");
+
+        // 🎶 Reiniciar música del nivel si existe
+        if (musicaDuranteNivel != null && audioSource != null)
+        {
+            audioSource.Stop();
+            audioSource.clip = musicaDuranteNivel;
+            audioSource.Play();
+        }
     }
 
-    // M�todo p�blico para pruebas: forzar que el timer llegue a cero
+    // Método público para pruebas: forzar que el timer llegue a cero
     public void ForceExpire()
     {
         timer = 0f;
@@ -92,7 +130,7 @@ public class TimerController : MonoBehaviour
         Update();               // en modo test llamamos Update() manualmente si queremos
     }
 
-    // Esta funci�n ser� llamada por EndsController cuando toque al Player
+    // Esta función será llamada por EndsController cuando toque al Player
     public void NotifyObjectTouchedPlayer()
     {
         ResetTimer();

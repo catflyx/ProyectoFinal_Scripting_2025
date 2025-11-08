@@ -632,6 +632,8 @@ MonoBehaviour:
   objectToActivate: {fileID: 1422204119}
   timerText: {fileID: 993315869}
   backgroundController: {fileID: 1763789714}
+  musicaDuranteNivel: {fileID: 8300000, guid: 65da8428e87b4454a89ef4195b395075, type: 3}
+  musicaFinNivel: {fileID: 8300000, guid: 652dea530713b774a83ccdfea0d0012b, type: 3}
 --- !u!114 &193425937
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3312,7 +3314,6 @@ MonoBehaviour:
   groundMaterial2: {fileID: 6200000, guid: 1b68dc205e0b76544824dc274e65aff1, type: 2}
   airMaterial: {fileID: 6200000, guid: d8eda723073c87e4fa40d4ebf39184c9, type: 2}
   respawnPoint: {fileID: 2092232701}
-  jumpSound: {fileID: 1170595402}
 --- !u!82 &1170595402
 AudioSource:
   m_ObjectHideFlags: 0

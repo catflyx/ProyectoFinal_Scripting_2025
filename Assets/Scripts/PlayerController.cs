@@ -22,10 +22,6 @@ public class PlayerController : MonoBehaviour
     [Header("Respawn")]
     public Transform respawnPoint;
 
-    [Header("Audio")]
-    public AudioSource jumpSound;  //  Asigna un AudioSource con el sonido de salto
-    private int jumpClickCounter = 0; // contador de clics
-
     private Rigidbody2D rb;
     private bool canGroundJump;
     private float wallTimer;
@@ -58,26 +54,14 @@ public class PlayerController : MonoBehaviour
 
         if (Input.GetMouseButtonDown(0))
         {
-            jumpClickCounter++; //  Aumenta el contador de clics
-
             if (canGroundJump)
             {
                 JumpToMouse();
-                PlayJumpSoundIfNeeded(); //  Verifica si debe sonar
             }
             else if (wallTimer > 0f)
             {
                 WallJump();
-                PlayJumpSoundIfNeeded(); //  También aplica al wall jump
             }
-        }
-    }
-
-    void PlayJumpSoundIfNeeded()
-    {
-        if (jumpClickCounter % 3 == 0 && jumpSound != null)
-        {
-            jumpSound.Play();
         }
     }
 
@@ -134,10 +118,12 @@ public class PlayerController : MonoBehaviour
     {
         if (col.gameObject.CompareTag("GroundType1")) EvaluateCollision(col);
     }
+
     void OnCollisionStay2D(Collision2D col)
     {
         if (col.gameObject.CompareTag("GroundType1")) EvaluateCollision(col);
     }
+
     void OnCollisionExit2D(Collision2D col)
     {
         if (col.gameObject.CompareTag("GroundType1"))
