@@ -6,10 +6,14 @@ public class CristalPlatform : MonoBehaviour
     public int golpesParaRomper = 3;
     public float tiempoParaRegenerar = 5f;
     public Sprite cristalRoto;
-    public Sprite cristalNormal; // guardamos el sprite original
+    public Sprite cristalNormal;
 
     [Header("Referencia al Timer")]
     public TimerController timerController;
+
+    [Header("Sonido del cristal")]
+    public AudioClip sonidoRoto; // asigna aquí tu clip de sonido
+    private AudioSource audioSource;
 
     private int golpesRecibidos = 0;
     private bool roto = false;
@@ -22,21 +26,25 @@ public class CristalPlatform : MonoBehaviour
         sr = GetComponent<SpriteRenderer>();
         col = GetComponent<Collider2D>();
 
-        // Guarda el sprite original para restaurarlo luego
         if (sr != null)
             cristalNormal = sr.sprite;
 
-        // Opcional: si no se asigna en el inspector, busca automáticamente el TimerController
         if (timerController == null)
             timerController = FindObjectOfType<TimerController>();
+
+        // Añadimos (o usamos) el AudioSource
+        audioSource = GetComponent<AudioSource>();
+        if (audioSource == null)
+            audioSource = gameObject.AddComponent<AudioSource>();
+
+        // Configuración básica para que no se corte
+        audioSource.playOnAwake = false;
     }
 
     void Update()
     {
-        // Si hay un TimerController y el tiempo llegó a 0 o menos  regenerar
         if (timerController != null && timerController.CurrentTime <= 0f && roto)
         {
-            // regenerar aunque no haya pasado el tiempo fijo
             RegenerarCristal();
         }
     }
@@ -59,7 +67,11 @@ public class CristalPlatform : MonoBehaviour
         roto = true;
         esperandoRegeneracion = true;
 
-        // Ocultar el cristal visualmente
+        // Reproducir sonido
+        if (sonidoRoto != null && audioSource != null)
+            audioSource.PlayOneShot(sonidoRoto);
+
+        // Cambiar sprite
         if (sr)
         {
             if (cristalRoto != null)
@@ -73,7 +85,7 @@ public class CristalPlatform : MonoBehaviour
 
         Debug.Log(" Cristal roto!");
 
-        // Si tiene tiempo de regeneración automática
+        // Regeneración automática
         if (tiempoParaRegenerar > 0)
             Invoke(nameof(RegenerarCristal), tiempoParaRegenerar);
     }
@@ -86,7 +98,6 @@ public class CristalPlatform : MonoBehaviour
         esperandoRegeneracion = false;
         golpesRecibidos = 0;
 
-        // Restaurar sprite y colisión
         if (sr)
         {
             sr.enabled = true;

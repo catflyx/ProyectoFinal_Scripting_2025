@@ -463,7 +463,7 @@ Transform:
   m_GameObject: {fileID: 138057431}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -8.474762, y: -2.4399948, z: -10}
+  m_LocalPosition: {x: 1.8553314, y: -2.4399948, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2113,6 +2113,7 @@ MonoBehaviour:
   cristalRoto: {fileID: 0}
   cristalNormal: {fileID: 0}
   timerController: {fileID: 0}
+  sonidoRoto: {fileID: 0}
 --- !u!61 &856364778
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -4556,6 +4557,7 @@ MonoBehaviour:
   cristalRoto: {fileID: 0}
   cristalNormal: {fileID: 0}
   timerController: {fileID: 0}
+  sonidoRoto: {fileID: 8300000, guid: 629d2886103f0e043889cf885671e57c, type: 3}
 --- !u!61 &1959537704
 BoxCollider2D:
   m_ObjectHideFlags: 0
